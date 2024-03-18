@@ -1,5 +1,4 @@
 import { cva } from "class-variance-authority";
-import { MenuBar } from "../../components/Menu";
 
 // Base definition
 const base = "inline-flex";
