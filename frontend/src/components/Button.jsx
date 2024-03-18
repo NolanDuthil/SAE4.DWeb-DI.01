@@ -9,34 +9,32 @@ const button = cva(base, {
   variants: {
     intent: {
       primary: [
-        "bg-green-400",
+        "bg-button",
         "text-forground",
-        "hover:bg-green-300",
+        "hover:bg-button/90",
         "rounded-md",
         "font-bold",
       ],
       secondary: [
         "bg-transparent",
-        "text-white",
-        "border-white",
+        "text-forground",
+        "border-borderBtn",
         "border-solid",
         "border-2",
-        "hover:border-gray-300",
+        "hover:border-hoverBorderBtn",
         "rounded-md",
         "font-bold",
       ],
       categories: [
         "bg-transparent",
-        "text-white",
-        "border-gray-300",
+        "text-forground",
+        "border-borderBtn",
         "border-solid",
         "border-2",
         "rounded-md",
         "font-bold",
+        "mx-0",
       ],
-      MenuBar: [
-        "bg-transparent",
-      ]
     },
     size: {
       categories: ["text-sm"],
@@ -52,19 +50,6 @@ const button = cva(base, {
   },
 });
 
-function Button({ intent, size, className, ...rest }) {
+export default function Button({ intent, size, className, ...rest }) {
   return <button {...rest} className={button({ intent, size, className })} />;
-}
-
-export default function AllButton() {
-  return (
-    <div className="grid bg-background h-screen place-content-center">
-      <Button>Click me</Button>
-      <Button intent="secondary">Click me</Button>
-      <Button intent="categories" size="categories">Click me</Button>
-      <Button intent="MenuBar">
-        <MenuBar className=""></MenuBar>
-      </Button>
-    </div>
-  );
 }
