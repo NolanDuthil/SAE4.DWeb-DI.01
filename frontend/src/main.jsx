@@ -9,6 +9,8 @@ import ErrorPage from './ui/ErrorPage/index.jsx';
 import OurTeams, {loader as OurTeamLoader} from './routes/ourTeams.jsx';
 
 import './index.css';
+import Ex3_2 from './components/Button.jsx';
+import AllButton from './components/Button.jsx';
 
 
 const router = createBrowserRouter([
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
         path: '/team/:teamName',
         element: <OurTeams />,
         loader: OurTeamLoader,
+      },
+      {
+        path: '/button',
+        element: <AllButton />
       }
     ]
   },

@@ -4,17 +4,48 @@
 
 @layer base {
   :root {
-    /* Primitives Tokens  */
-    --clr-white: 0 0% 100%;
-    --clr-dark-grey: 0 0% 10%;
-    /* Sementics Tokens */
-    --foreground: var(--clr-dark-grey);
-    --background: var(--clr-white);
+      /* Primtive Tokens */
+      /* Primary */
+      --black: 0 0% 0%;
+      --white: 0 0% 100%;
+      --green: 158 100% 50%;
+      --light-green: 158 100% 68%;
+      --dark-blue: 240 32% 11%;
+      --gray: 227 4% 59%;
+      --light-gray: 240 12% 87%;
+      --bg-black: 240 52% 5%;
+      --orange: 25 98% 63%;
+      --pink: 347 93% 57%;
 
-    --radius: 0.5rem;
-    --gap: 1rem;
+      /* Secondary */
+      --gray-blue: 240 16% 17%;
+      --dark-gray: 236 12% 23%;
+      --secondary-gray: 223 7% 39%;
 
-    
-    
+      /* Semantics Tokens */
+      /* Background */
+      --background: var(--bg-black);
+      --bg-card: var(--gray-blue);
+      --bg-icon: var(--dark-gray);
+      --bg-age-card: var(--secondary-gray);
+      --bg-select-cat: var(--dark-blue);
+
+      /* Button */
+      --button: var(--green);
+      --hover-btn: var(--light-green);
+      --border-btn: var(--white);
+      --hover-border-btn: var(--light-gray);
+      --border-tag: var(--secondary-gray);
+      --border-score: var(--white);
+
+      /* Text */
+      --text-suscription: var(--green);
+      --text-loan: var(--orange);
+      --text-new-episode: var(--pink);
+      --forground: var(--white);
+      --text-button: var(--black);
+      --hover-text-nav: var(--green);
+      --text-email: var(--secondary-gray);
+
   }
 }
