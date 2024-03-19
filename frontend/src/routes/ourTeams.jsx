@@ -1,4 +1,4 @@
-import { Await, defer, useLoaderData } from "react-router-dom";
+/*import { Await, defer, useLoaderData } from "react-router-dom";
 import Teams from '../ui/Team';
 import { fetchOurTeams, fetchTestimonialData } from "../lib/loaders";
 import Testimonial from "../ui/Testimonial";
@@ -25,4 +25,4 @@ export default function OurTeams() {
             <Testimonial data={data.testimonial} />
         </>
     )
-}
+}*/

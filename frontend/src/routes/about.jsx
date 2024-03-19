@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+/*import {Link} from 'react-router-dom';
 
 export default function About() {
     
@@ -10,4 +10,4 @@ export default function About() {
         <Link to="/"><button className="bg-gray-500/50 px-3 rounded-full">Home</button></Link>
       </div>
     );
-  }
+  }*/

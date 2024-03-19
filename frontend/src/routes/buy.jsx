@@ -1,4 +1,4 @@
-import { fetchPricingData } from "../lib/loaders";
+/*import { fetchPricingData } from "../lib/loaders";
 import Pricing from "../ui/Pricing";
 import { useLoaderData } from "react-router-dom";
 
@@ -16,4 +16,4 @@ export default function Buy() {
         </section>
       </>
     );
-  }
+  }*/
