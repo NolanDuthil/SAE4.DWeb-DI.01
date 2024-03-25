@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 // Base definition
-const base = "inline-flex";
+const base = "flex items-center justify-center ";
 
 
 
@@ -10,7 +10,7 @@ const button = cva(base, {
     intent: {
       primary: [
         "bg-button",
-        "text-forground",
+        "text-textButton",
         "hover:bg-button/90",
         "rounded-md",
         "font-bold",

@@ -1,4 +1,4 @@
-import NavBar from "../ui/NavBar";
+import NavBar from "../ui/NavBar/NavBar";
 import Card from "../components/Card"
 import { Outlet } from "react-router-dom";
 import Button from "../components/Button";
@@ -9,7 +9,6 @@ export default function Root() {
     <>
       <section className="bg-background h-screen">
         <NavBar />
-        <Card />
       </section>
     </>
   );
