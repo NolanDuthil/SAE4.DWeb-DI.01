@@ -6,7 +6,6 @@ import Root from './routes/root.jsx';
 import ErrorPage from './ui/ErrorPage/index.jsx';
 
 import './index.css';
-import AllButton from './components/Button.jsx';
 
 
 const router = createBrowserRouter([
@@ -17,7 +16,6 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/button',
-        element: <AllButton />
       },
     ]
   },

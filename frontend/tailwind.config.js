@@ -29,7 +29,7 @@ export default {
         textEmail: "hsl(var(--text-email) /<alpha-value>)",
       },
       backgroundImage: {
-        'header-bg': "url('/img/testcard.webp')"
+        'header': "url('/img/header.jpg')"
       },
     },
   },

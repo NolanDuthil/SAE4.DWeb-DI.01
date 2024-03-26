@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { MenuBar } from '../../components/Icons';
+import { MenuBar } from '../Icons/Icons';
 import Button from '../Button/Button'
-import { Search } from '../../components/Icons';
-import { Mark } from '../../components/Icons';
-import { LogoFilmIn } from '../../components/Icons';
+import { Search } from '../Icons/Icons';
+import { Mark } from '../Icons/Icons';
+import { LogoFilmIn } from '../Icons/Icons';
 import MenuBurger from '../MenuBurger/MenuBurger';
 import { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
@@ -22,10 +22,10 @@ export default function NavBar() {
       <nav className="bg-background flex justify-between p-3">
       <div className='flex'>
           {MenuBurgerOpen ? 
-            <Mark className="w-8 mr-3 relative z-10  md:hidden " onClick={toggleMenuBurger} /> :
-            <MenuBar className="w-8 mr-3 relative z-10  md:hidden " onClick={toggleMenuBurger} />
+            <Mark className="w-8 mr-3 relative z-30  md:hidden " onClick={toggleMenuBurger} /> :
+            <MenuBar className="w-8 mr-3 relative z-30  md:hidden " onClick={toggleMenuBurger} />
           }
-          <LogoFilmIn className="w-16 z-10"/>
+          <LogoFilmIn className="w-16 z-30"/>
         </div>
 
         <MenuBurger isActive={MenuBurgerOpen} />
