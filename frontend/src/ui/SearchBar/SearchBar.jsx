@@ -1,13 +1,18 @@
-export default function SearchBar({isActive}){
+import { ArrowBack, Search } from "../Icons/Icons"
 
-    const classActive = isActive? "translate-x-0":"-translate-x-full"
+export default function SearchBar({ toggleSearchBar }) {
 
-    
-    return(
-
-        <div className={`flex flex-col gap-4 w-full max-w-72 fixed top-0 bottom-0 left-0 bg-bgSelectCat pt-16 p-4 ${classActive} md:flex-row md:static md:translate-x-0 md:bg-transparent md:p-0`}>
-            
+    return (
+        <div className="flex items-center bg-forground p-2 w-full z-10">
+            <button onClick={toggleSearchBar}>
+                <ArrowBack/>
+            </button>
+            <div className="flex items-center bg-forground p-2 flex-grow">
+                <input className="bg-transparent border-solid border-2 border-background rounded-md p-1 placeholder-gray-500 flex-grow w-full" type="text" placeholder="Busca por título, director, país, actor, tag..." />
+            </div>
+            <button className="w-8" onClick={toggleSearchBar}>
+                <Search className="text-background"/>
+            </button>
         </div>
-
     )
 }
