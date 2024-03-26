@@ -28,6 +28,9 @@ export default {
         hoverTextNav: "hsl(var(--hover-text-nav) /<alpha-value>)",
         textEmail: "hsl(var(--text-email) /<alpha-value>)",
       },
+      backgroundImage: {
+        'header-bg': "url('/img/testcard.webp')"
+      },
     },
   },
   plugins: [],

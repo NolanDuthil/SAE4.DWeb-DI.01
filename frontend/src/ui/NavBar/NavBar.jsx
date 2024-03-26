@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { MenuBar } from '../../components/Icons';
-import Button from '../../components/Button'
+import Button from '../Button/Button'
 import { Search } from '../../components/Icons';
 import { Mark } from '../../components/Icons';
 import { LogoFilmIn } from '../../components/Icons';
 import MenuBurger from '../MenuBurger/MenuBurger';
 import { useState } from 'react';
+import SearchBar from '../SearchBar/SearchBar';
 
 
 export default function NavBar() {
