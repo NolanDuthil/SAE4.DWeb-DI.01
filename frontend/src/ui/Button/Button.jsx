@@ -28,17 +28,18 @@ const button = cva(base, {
       categories: [
         "bg-transparent",
         "text-forground",
-        "border-borderBtn",
+        "border-borderBtn/80",
         "border-solid",
         "border-2",
         "rounded-md",
         "font-bold",
         "mx-0",
+        "p-1"
       ],
     },
     size: {
       categories: ["text-sm"],
-      small: ["text-sm", "py-0.5", "px-1"],
+      small: ["text-sm", "p-2"],
       medium: ["text-base", "py-3", "px-6"],
     },
   },
