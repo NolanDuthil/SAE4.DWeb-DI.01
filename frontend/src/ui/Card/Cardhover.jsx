@@ -13,7 +13,7 @@ export default function Cardhover() {
                 <Button intent="categories" size="categories">Romantique</Button>
                 <Button intent="categories" size="categories">Drama</Button>
             </div>
-            <a className="text-forground mx-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis doloribus, dolores accusantium officiis neque provident nam adipisci rerum quia eligendi quis omnis cumque ipsa voluptate minus eum deleniti voluptates a.</a>
+            <a className="text-forground mx-2 mb-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis doloribus, dolores accusantium officiis neque provident nam adipisci rerum quia eligendi quis omnis cumque ipsa voluptate minus eum deleniti voluptates a.</a>
         </div>
     )
 }
