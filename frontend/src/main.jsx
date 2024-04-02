@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Root from './routes/root.jsx';
 import ErrorPage from './ui/ErrorPage/index.jsx';
+import {loader as homeloader } from "./ui/List/List.jsx"
 
 import './index.css';
 
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <Root />,
     errorElement: < ErrorPage/>,
+    loader: homeloader, 
     children: [
       {
         path: '/button',

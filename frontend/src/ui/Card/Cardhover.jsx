@@ -1,19 +1,22 @@
 import Button from "../Button/Button";
 
-export default function Cardhover() {
+export default function Cardhover({ data }) {
     return (
-        <div className="bg-bgCard rounded-lg w-full h-96 border-solid border-2 mb-2 border-forground/20 flex flex-col gap-2">
-            <div className="bg-header w-full h-44 bg-cover bg-center"></div>
+        <div className="bg-bgCard rounded-lg w-full h-[32rem] border-solid border-2 mb-2 border-forground/20 flex flex-col gap-2">
+            <div className="w-full h-44 relative">
+                <img src={`/img/${data.img}`} alt="" className="absolute inset-0 w-full h-full object-cover" />
+            </div>
             <div className="mx-2 flex flex-col gap-2">
                 <Button className="">Voir</Button>
-                <h2 className="text-forground">Vidas Pasadas</h2>
-                <h2 className="text-forground">1h 46min</h2>
+                <h2 className="text-forground">{data.name}</h2>
+                <h2 className="text-forground">{data.duree}</h2>
             </div>
             <div className="flex flex-row gap-2 ml-2">
-                <Button intent="categories" size="categories">Romantique</Button>
-                <Button intent="categories" size="categories">Drama</Button>
+                {data.category.map((category, index) => (
+                    <Button key={index} intent="categories" size="categories">{category.name}</Button>
+                ))}
             </div>
-            <a className="text-forground mx-2 mb-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis doloribus, dolores accusantium officiis neque provident nam adipisci rerum quia eligendi quis omnis cumque ipsa voluptate minus eum deleniti voluptates a.</a>
+            <a className="text-forground mx-2 mb-2">{data.description}</a>
         </div>
     )
 }
