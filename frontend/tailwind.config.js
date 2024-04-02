@@ -31,6 +31,10 @@ export default {
       backgroundImage: {
         'header': "url('/img/header.jpg')"
       },
+      objectFit: {
+        cover: 'cover',
+        contain: 'contain',
+      },
     },
   },
   plugins: [],

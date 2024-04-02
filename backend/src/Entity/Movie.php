@@ -37,6 +37,9 @@ class Movie
     #[ORM\Column(length: 255)]
     private ?string $duree = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $video = null;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -115,6 +118,18 @@ class Movie
     public function setDuree(string $duree): static
     {
         $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getVideo(): ?string
+    {
+        return $this->video;
+    }
+
+    public function setVideo(string $video): static
+    {
+        $this->video = $video;
 
         return $this;
     }

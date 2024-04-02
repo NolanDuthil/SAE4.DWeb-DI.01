@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 
 export default function Cardhover({ data }) {
@@ -7,7 +8,7 @@ export default function Cardhover({ data }) {
                 <img src={`/img/${data.img}`} alt="" className="absolute inset-0 w-full h-full object-cover" />
             </div>
             <div className="mx-2 flex flex-col gap-2">
-                <Button className="">Voir</Button>
+            <Link to={`/Film/${data.id}`} > <Button className="w-full">Voir</Button></Link>
                 <h2 className="text-forground">{data.name}</h2>
                 <h2 className="text-forground">{data.duree}</h2>
             </div>

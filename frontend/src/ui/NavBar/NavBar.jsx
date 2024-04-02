@@ -47,7 +47,7 @@ export default function NavBar() {
               <Mark className="w-8 mr-3  relative z-50  md:hidden " onClick={toggleMenuBurger} /> :
               <MenuBar className="w-8 mr-3 relative z-50  md:hidden " onClick={toggleMenuBurger} />
             }
-            <LogoFilmIn className="w-16 z-30"/>
+            <Link to="/" ><LogoFilmIn className="w-16 z-30"/></Link>
           </div>
 
           <MenuBurger isActive={MenuBurgerOpen} className="z-50" />
