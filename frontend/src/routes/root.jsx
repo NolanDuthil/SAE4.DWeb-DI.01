@@ -12,9 +12,9 @@ export default function Root() {
   return (
     <>
       <section className="bg-background h-screen">
-        <Header />
-        <List/>
-      </section>
+        <NavBar/>
+        <Outlet/>
+        </section>
     </>
   );
 }

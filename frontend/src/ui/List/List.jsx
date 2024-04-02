@@ -1,14 +1,7 @@
-import { useLoaderData } from "react-router-dom";
-import { fetchMovies } from "../../lib/loaders";
 import Card from "../Card/Card";
 
 
-export async function loader(){
-    return await fetchMovies();
-}
-
-export default function List() {
-    const data = useLoaderData();
+export default function List({data}) {
     return (
         <div className="mt-10 mx-12">
             <h1 className="text-forground text-2xl font-bold">Film</h1>
