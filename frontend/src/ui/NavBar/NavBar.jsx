@@ -41,8 +41,8 @@ export default function NavBar() {
       {SearchBarOpen ? (
         <SearchBar toggleSearchBar={toggleSearchBar} />
       ) : (
-        <nav className={`fixed w-full p-3 z-30 flex justify-between items-center transition-colors duration-200 ${isScrolled ? 'bg-background' : 'bg-transparent'}`}>
-          <div className='flex'>
+        <nav className={`fixed w-full p-4 z-30 flex justify-between items-center transition-colors duration-200 ${isScrolled ? 'bg-background' : 'bg-transparent'}`}>
+          <div className='flex items-center'>
             {MenuBurgerOpen ? 
               <Mark className="w-8 mr-3  relative z-50  md:hidden " onClick={toggleMenuBurger} /> :
               <MenuBar className="w-8 mr-3 relative z-50  md:hidden " onClick={toggleMenuBurger} />

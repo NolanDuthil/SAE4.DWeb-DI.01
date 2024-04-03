@@ -19,6 +19,20 @@ export default function FilmPage({ data }) {
                     <Button className="w-2/3">Voir</Button>
                 </div>
             </div>
+            <div className="flex items-center mt-32 pb-5 flex-col md:flex-row w-full gap-10 px-10">
+                <div className="rounded-md bg-bgIcon w-1/2 w-[40rem] md:w-full h-full p-5 flex flex-col gap-5">
+                    <h2 className="text-forground/40 text-4xl">Synopsis</h2>
+                    <h2 className="text-forground text-md">{data.description}</h2>
+                </div>
+                <div className="rounded-md bg-bgIcon flex w-[40rem] md:w-full h-[12rem] justify-center flex-col gap-5 w-1/2 p-5">
+                    <h2 className="text-forground/40 text-4xl">Catégories</h2>
+                    <div className="flex flex-row gap-3">
+                        {data.category.map((category, index) => (
+                            <h2 className="text-forground text-md">{category.name}</h2>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
