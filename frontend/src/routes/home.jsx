@@ -10,6 +10,7 @@ export async function loader(){
 
 export default function Home() {
     const data = useLoaderData();
+
     return (
         <>
             <section className="bg-background h-screen">

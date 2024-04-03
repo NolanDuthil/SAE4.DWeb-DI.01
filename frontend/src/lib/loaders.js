@@ -45,8 +45,8 @@ export async function fetchCat() {
     return data;
 }
 
-export async function fetchSearch() {
-    let answer = await fetch('http://localhost:8080/api/search');
+export async function fetchSearch({query}) {
+    let answer = await fetch(`http://localhost:8080/api/search/${query}`);
     let data = await answer.json();
     return data;
 }

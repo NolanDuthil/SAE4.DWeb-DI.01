@@ -47,17 +47,17 @@ class ApiController extends AbstractController
     return $response;
   }
 
-  #[Route('/api/search', name: 'app_api_search')]
-  public function readSearch(MovieRepository $mov, CategoryRepository $cat, SerializerInterface $serializer): Response
+  #[Route('/api/search/{query}', name: 'app_api_search')]
+  public function search(string $query, MovieRepository $mov, SerializerInterface $serializer): Response
   {
-    $movie = $mov->findAll();
-    $category = $cat->findAll();
+    $query = '%' . $query . '%'; // Wrap the query with % for the LIKE operator
+    $movies = $mov->createQueryBuilder('m')
+        ->where('m.name LIKE :query')
+        ->setParameter('query', $query)
+        ->getQuery()
+        ->getResult();
 
-    $data = [
-      'movies' => $serializer->normalize($movie, null, ['groups' => 'json_movie']),
-      'categories' => $serializer->normalize($category, null, ['groups' => 'json_category'])
-    ];
-
+    $data = $serializer->normalize($movies, null, ['groups' => 'json_search']);
     $response = new JsonResponse($data);
     return $response;
   }
@@ -71,6 +71,8 @@ class ApiController extends AbstractController
     return $response;
   }
 }
+
+
 
 
 

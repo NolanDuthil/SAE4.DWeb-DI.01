@@ -7,6 +7,8 @@ import { LogoFilmIn } from '../Icons/Icons';
 import MenuBurger from '../MenuBurger/MenuBurger';
 import { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
+import { fetchSearch } from "../../lib/loaders"
+import ListResult from '../List/ListResult';
 
 
 export default function NavBar() {
@@ -20,6 +22,20 @@ export default function NavBar() {
 
   const toggleSearchBar = () => {
     setSearchBarOpen(!SearchBarOpen)
+  }
+
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+
+  const loader = async () => {
+      const result = await fetchSearch({ query });
+      console.log(result);
+      setResults(result);
+  }
+
+  const handleSubmit = (event) => {
+      event.preventDefault();
+      loader();
   }
 
   // Ecouter l'événement de défilement
@@ -39,7 +55,7 @@ export default function NavBar() {
   return (
     <>
       {SearchBarOpen ? (
-        <SearchBar toggleSearchBar={toggleSearchBar} />
+        <SearchBar handleSubmit={handleSubmit} query={query} setQuery={setQuery} toggleSearchBar={toggleSearchBar} />
       ) : (
         <nav className={`fixed w-full p-4 z-30 flex justify-between items-center transition-colors duration-200 ${isScrolled ? 'bg-background' : 'bg-transparent'}`}>
           <div className='flex items-center'>
@@ -56,7 +72,8 @@ export default function NavBar() {
             <Search />
           </button>
         </nav>
-      )}
+        )}
+
     </>
   );
 }
