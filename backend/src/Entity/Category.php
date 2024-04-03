@@ -29,15 +29,7 @@ class Category
    private Collection $movies;
 
    #[ORM\ManyToOne(inversedBy: 'category')]
-   #[ORM\JoinColumn(nullable: false)]
-   private ?Serie $category = null;
-
-   #[ORM\ManyToOne(inversedBy: 'categories')]
-   #[ORM\JoinColumn(nullable: false)]
-   private ?Serie $serie_category = null;
-
-   #[ORM\ManyToOne(inversedBy: 'category')]
-   private ?Serie $serie = null;
+   #[ORM\JoinColumn(nullable: true)]
 
 
     public function __construct()
@@ -90,42 +82,6 @@ class Category
         if ($this->movies->removeElement($movie)) {
             $movie->removeCategory($this);
         }
-
-        return $this;
-    }
-
-    public function getCategory(): ?Serie
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Serie $category): static
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    public function getSerieCategory(): ?Serie
-    {
-        return $this->serie_category;
-    }
-
-    public function setSerieCategory(?Serie $serie_category): static
-    {
-        $this->serie_category = $serie_category;
-
-        return $this;
-    }
-
-    public function getSerie(): ?Serie
-    {
-        return $this->serie;
-    }
-
-    public function setSerie(?Serie $serie): static
-    {
-        $this->serie = $serie;
 
         return $this;
     }

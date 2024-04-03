@@ -35,6 +35,9 @@ export default {
         cover: 'cover',
         contain: 'contain',
       },
+      fontFamily: {
+        'Graphik': ['GraphikRegular', 'sans-serif']
+      }
     },
   },
   plugins: [],

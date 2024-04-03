@@ -48,4 +48,12 @@
       --text-email: var(--secondary-gray);
 
   }
+
+  @font-face {
+    font-family: 'GraphikRegular';
+    src: url('../public/fonts/GraphikRegular.otf') format('otf');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
 }

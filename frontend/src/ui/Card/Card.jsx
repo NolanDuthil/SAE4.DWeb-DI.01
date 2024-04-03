@@ -20,7 +20,7 @@ export default function Card({data}) {
 
   return (
     <div
-      className="w-1/3 rounded-md relative h-56"
+      className="w-[34rem] rounded-md relative h-56"
       onMouseEnter={() => !isMd && setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
