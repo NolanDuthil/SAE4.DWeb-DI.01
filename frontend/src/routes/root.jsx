@@ -11,9 +11,11 @@ export default function Root() {
 
   return (
     <>
-      <section className="bg-background h-screen">
+      <section className="bg-background min-h-screen ">
         <NavBar/>
+        <div className="pt-24">
         <Outlet/>
+        </div>
         </section>
     </>
   );

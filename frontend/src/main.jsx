@@ -4,12 +4,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Root from './routes/root.jsx';
 import ErrorPage from './ui/ErrorPage/index.jsx';
-import { loader as homeloader } from "./routes/home.jsx";
-import { loader as filmloader } from "./routes/movie.jsx";
+import Home, { loader as homeloader } from "./routes/home.jsx";
+import Film, { loader as filmloader } from "./routes/movie.jsx";
+import Select, { loader as selectloader } from "./routes/select.jsx";
+
 
 import './index.css';
-import Home from './routes/home.jsx';
-import Film from './routes/movie.jsx';
 
 
 const router = createBrowserRouter([
@@ -27,7 +27,12 @@ const router = createBrowserRouter([
         path: '/Film/:id',
         element: <Film/>, 
         loader: filmloader,
-    }
+    },
+    {
+      path: '/Select',
+      element: <Select/>, 
+      loader: selectloader,
+    },
     ]
   },
 ]);

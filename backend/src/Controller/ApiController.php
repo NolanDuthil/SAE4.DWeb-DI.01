@@ -23,10 +23,10 @@ class ApiController extends AbstractController
   }
 
   #[Route('/api/movie/{id}', name: 'app_api_movie')]
-  public function readMovie(Movie $mov, SerializerInterface $serializer ): Response
+  public function readMovie(Movie $mov, SerializerInterface $serializer): Response
   {
     $data = $serializer->normalize($mov, null, ['groups' => 'json_movie']);
-    $response = new JsonResponse( $data );
+    $response = new JsonResponse($data);
     return $response;
   }
 
@@ -48,7 +48,7 @@ class ApiController extends AbstractController
   }
 
   #[Route('/api/search', name: 'app_api_search')]
-  public function reaSearch(MovieRepository $mov, CategoryRepository $cat, SerializerInterface $serializer): Response
+  public function readSearch(MovieRepository $mov, CategoryRepository $cat, SerializerInterface $serializer): Response
   {
     $movie = $mov->findAll();
     $category = $cat->findAll();
@@ -61,4 +61,16 @@ class ApiController extends AbstractController
     $response = new JsonResponse($data);
     return $response;
   }
+
+  #[Route('/api/category', name: 'app_api_allcategory')]
+  public function readAllCategory(CategoryRepository $cat, SerializerInterface $serializer): Response
+  {
+    $category = $cat->findAll();
+    $data = $serializer->normalize($category, null, ['groups' => 'json_category']);
+    $response = new JsonResponse($data);
+    return $response;
+  }
 }
+
+
+
