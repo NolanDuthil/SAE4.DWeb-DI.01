@@ -16,7 +16,7 @@ export default function List({ data }) {
     return (
         <div className="mt-10 mx-12 w-full">
             <h1 className="text-forground text-2xl font-bold">Film</h1>
-            <div className="mt-5 flex md:flex-row items-center flex-col gap-10">
+            <div className="mt-5 flex md:flex-row items-center flex-col">
             <button onClick={prevSlide} className={`text-white${current === 0 ? 'hidden' : ''}`} disabled={current === 0}><ArrowBack className="w-12"/></button>
                 <div className="flex md:flex-row flex-col gap-10">
                     {data.map((movie, index) => (

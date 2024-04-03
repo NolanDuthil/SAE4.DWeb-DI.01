@@ -13,7 +13,7 @@ export default function Root() {
     <>
       <section className="bg-background min-h-screen ">
         <NavBar/>
-        <div className="pt-24">
+        <div className="">
         <Outlet/>
         </div>
         </section>

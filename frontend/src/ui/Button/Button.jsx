@@ -43,7 +43,7 @@ const button = cva(base, {
       medium: ["text-md", "py-3", "px-6", "w-[20rem]"],
     },
   },
-  compoundVariants: [{ intent: "primary", size: "medium", class: "uppercase" }],
+  compoundVariants: [{ intent: "primary", size: "medium" }],
   defaultVariants: {
     intent: "primary",
     size: "medium",
