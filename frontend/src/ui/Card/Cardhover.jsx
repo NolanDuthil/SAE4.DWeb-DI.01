@@ -3,12 +3,12 @@ import Button from "../Button/Button";
 
 export default function Cardhover({ data }) {
     return (
-        <div className="bg-bgCard rounded-lg w-full h-[32rem] border-solid border-2 mb-2 border-forground/20 flex flex-col gap-2">
+        <Link to={`/Film/${data.id}`} ><div className="bg-bgCard rounded-lg w-full h-[32rem] border-solid border-2 mb-2 border-forground/20 flex flex-col gap-2">
             <div className="w-full h-44 relative">
                 <img src={`/img/${data.img}`} alt="" className="absolute inset-0 w-full h-full object-cover" />
             </div>
             <div className="mx-2 flex flex-col gap-2">
-            <Link to={`/Film/${data.id}`} > <Button className="w-full">Voir</Button></Link>
+            <Button className="w-full">Voir</Button>
                 <h2 className="text-forground">{data.name}</h2>
                 <h2 className="text-forground">{data.duree}</h2>
             </div>
@@ -18,6 +18,6 @@ export default function Cardhover({ data }) {
                 ))}
             </div>
             <a className="text-forground mx-2 mb-2">{data.description}</a>
-        </div>
+        </div></Link>
     )
 }
