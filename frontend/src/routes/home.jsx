@@ -13,7 +13,7 @@ export default function Home() {
 
     return (
         <>
-            <section className="bg-background h-screen">
+            <section className="bg-background h-screen w-screen">
                 <Header />
                 <List data={data}/>
             </section>

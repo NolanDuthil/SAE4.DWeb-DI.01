@@ -28,7 +28,7 @@ export default function FilmPage({ data }) {
                     <h2 className="text-forground/40 text-4xl">Catégories</h2>
                     <div className="flex flex-row gap-3">
                         {data.category.map((category, index) => (
-                            <h2 className="text-forground text-md">{category.name}</h2>
+                            <h2 className="text-forground text-md" key={index}>{category.name}</h2>
                         ))}
                     </div>
                 </div>

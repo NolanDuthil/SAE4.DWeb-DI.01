@@ -25,7 +25,7 @@ export default function MenuBurger({ isActive }) {
 
   return (
     <div className={`flex flex-col gap-4 w-full max-w-72 fixed top-0 bottom-0 left-0 bg-bgSelectCat pt-16 p-4 ${classActive} md:flex-row md:static md:translate-x-0 md:bg-transparent md:p-0 md:justify-center md:items-center`}>
-        <Button className=" order-1 md:order-3" size={isLg ? "medium" : "small"}>S'inscrire</Button>
+        <Button className=" order-1 md:order-3" onClick={() => window.location.href = 'http://localhost:8080/login'} size={isLg ? "medium" : "small"}>S'inscrire</Button>
         <Button className="order-2 md:order-4 whitespace-nowrap" size={isLg ? "medium" : "small"} intent="secondary">Se connecter</Button>
         <div className="flex flex-col items-center gap-4 md:flex-row">
         <Link to="/Select" ><h2 className="order-3 md:order-1 text-forground text-2xl hover:text-button">Film</h2></Link>

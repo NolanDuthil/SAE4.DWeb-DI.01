@@ -29,6 +29,7 @@ class Movie
     private Collection $category;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['json_search'])]
     private ?string $img = null;
 
     #[ORM\Column(type: Types::TEXT)]

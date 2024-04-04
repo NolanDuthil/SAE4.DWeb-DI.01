@@ -21,10 +21,12 @@ export default function SearchBar({ toggleSearchBar}) {
     }
 
     return (
-        <div className="flex items-center justify-center bg-forground p-2 w-full z-10">
+        <div className="flex flex-col bg-forground w-full">
+        <div className="flex items-center justify-center p-2 w-full z-10">
             <button className="text-black" onClick={toggleSearchBar}>
                 <ArrowBack />
             </button>
+            
             <div className="flex items-center bg-forground p-2 flex-grow">
                 <form className="flex w-full px-3.5 items-center" onSubmit={handleSubmit}>
                     <input className="bg-transparent border-solid border-2 border-background rounded-md p-1 pl-2 placeholder-gray-500 flex-grow w-full" type="text" placeholder="Rechercher..." value={query}
@@ -34,7 +36,8 @@ export default function SearchBar({ toggleSearchBar}) {
             <button className="w-8" onClick={toggleSearchBar}>
                 <Search className="text-background" />
             </button>
-            <ListResult/>
-        </div>
+            </div>
+            <ListResult results={results}/>
+            </div>
     )
 }
