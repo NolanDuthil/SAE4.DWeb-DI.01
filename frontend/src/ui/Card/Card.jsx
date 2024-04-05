@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import Cardhover, { CardhoverCat } from './Cardhover';
+import { Link } from 'react-router-dom';
 
-export default function Card({data}) {
+export default function Card({ data }) {
   const [hover, setHover] = useState(false);
   const [isMd, setIsMd] = useState(false);
   useEffect(() => {
@@ -18,22 +19,25 @@ export default function Card({data}) {
   }, []);
 
   return (
-    <div
+    <Link to={`/Film/${data.id}`}><div
       className="w-[34rem] rounded-md relative h-56"
       onMouseEnter={() => !isMd && setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      {!hover && (
-        <div className="absolute inset-0">
-          <img src={`/img/${data.img}`} alt="" className="absolute inset-0 w-full h-full object-cover rounded-md" />
-        </div>
-      )}
+      {
+        !hover && (
+          <div className="absolute inset-0">
+            <img src={`/img/${data.img}`} alt="" className="absolute inset-0 w-full h-full object-cover rounded-md" />
+          </div>
+        )
+      }
       {hover && <Cardhover data={data} className="absolute inset-0" />}
     </div>
-);
+    </Link>
+  );
 }
 
-export function CardCat({data}) {
+export function CardCat({ data }) {
   const [hover, setHover] = useState(false);
   const [isMd, setIsMd] = useState(false);
   console.log(data)
@@ -51,17 +55,20 @@ export function CardCat({data}) {
   }, []);
 
   return (
-    <div
+    <Link to={`/Film/${data.id}`}><div
       className="w-[34rem] rounded-md relative h-56"
       onMouseEnter={() => !isMd && setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      {!hover && (
-        <div className="absolute inset-0">
-          <img src={`/img/${data.img}`} alt="" className="absolute inset-0 w-full h-full object-cover rounded-md" />
-        </div>
-      )}
+      {
+        !hover && (
+          <div className="absolute inset-0">
+            <img src={`/img/${data.img}`} alt="" className="absolute inset-0 w-full h-full object-cover rounded-md" />
+          </div>
+        )
+      }
       {hover && <CardhoverCat data={data} className="absolute inset-0" />}
     </div>
-);
+    </Link>
+  );
 }
