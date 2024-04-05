@@ -1,22 +1,23 @@
 import NavBar from "../ui/NavBar/NavBar";
-import Card from "../ui/Card/Card"
-import { Outlet } from "react-router-dom";
-import Button from "../ui/Button/Button";
-import Header from "../ui/Header/Header";
-import Cardhover from "../ui/Card/Cardhover";
-import List from "../ui/List/List";
+import { Outlet, useLoaderData } from "react-router-dom";
+import { fetchUser } from "../lib/loaders";
+
+export async function loader() {
+  return await fetchUser();
+}
 
 
 export default function Root() {
+  const data = useLoaderData();
 
   return (
     <>
       <section className="bg-background min-h-screen ">
-        <NavBar/>
+        <NavBar user={data} />
         <div className="">
-        <Outlet/>
+          <Outlet />
         </div>
-        </section>
+      </section>
     </>
   );
 }

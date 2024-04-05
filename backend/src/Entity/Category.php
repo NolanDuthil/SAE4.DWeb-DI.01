@@ -16,16 +16,17 @@ class Category
    #[ORM\Id]
    #[ORM\GeneratedValue]
    #[ORM\Column]
-   #[Groups(['json_movie'])]
+   #[Groups(['json_movie', 'json_playlist'])]
    private ?int $id = null;
 
 
    #[ORM\Column(length: 255)]
-   #[Groups(['json_movie'])]
+   #[Groups(['json_movie', 'json_playlist'])]
    private ?string $name = null;
 
 
    #[ORM\ManyToMany(targetEntity: Movie::class, mappedBy: 'category')]
+   #[Groups(['json_category'])]
    private Collection $movies;
 
    #[ORM\ManyToOne(inversedBy: 'category')]

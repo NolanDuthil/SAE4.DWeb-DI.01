@@ -56,3 +56,21 @@ export async function fetchCatId(id) {
     let data = await answer.json();
     return data;
 }
+
+export async function fetchCategoriesName() {
+    let answer = await fetch("http://localhost:8080/api/category/name/");
+    let data = await answer.json();
+    return data;
+}
+
+export async function fetchUser() {
+    let answer = await fetch(`http://localhost:8080/api/user/`, {credentials: 'include'});
+    let data = await answer.json();
+    return data;
+}
+
+export async function fetchPlaylist() {
+    let answer = await fetch(`http://localhost:8080/api/playlist/`, {credentials: 'include'});
+    let data = await answer.json();
+    return data;
+}

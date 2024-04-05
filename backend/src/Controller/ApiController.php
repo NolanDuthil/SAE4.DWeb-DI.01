@@ -11,6 +11,7 @@ use App\Repository\CategoryRepository;
 use App\Repository\MovieRepository;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ApiController extends AbstractController
 {
@@ -50,12 +51,12 @@ class ApiController extends AbstractController
   #[Route('/api/search/{query}', name: 'app_api_search')]
   public function search(string $query, MovieRepository $mov, SerializerInterface $serializer): Response
   {
-    $query = '%' . $query . '%'; // Wrap the query with % for the LIKE operator
+    $query = '%' . $query . '%';
     $movies = $mov->createQueryBuilder('m')
-        ->where('m.name LIKE :query')
-        ->setParameter('query', $query)
-        ->getQuery()
-        ->getResult();
+      ->where('m.name LIKE :query')
+      ->setParameter('query', $query)
+      ->getQuery()
+      ->getResult();
 
     $data = $serializer->normalize($movies, null, ['groups' => 'json_search']);
     $response = new JsonResponse($data);
@@ -69,6 +70,42 @@ class ApiController extends AbstractController
     $data = $serializer->normalize($category, null, ['groups' => 'json_category']);
     $response = new JsonResponse($data);
     return $response;
+  }
+
+  #[Route('/api/category/name/', name: 'app_api_categories_name')]
+  public function readCategoriesName(CategoryRepository $categoryRepository, SerializerInterface $serializer): Response
+  {
+    $categories = $categoryRepository->findAll();
+    $data = $serializer->normalize($categories, null, ['groups' => 'json_category_name']);
+    $response = new JsonResponse($data);
+    return $response;
+  }
+
+  #[Route('/api/user', name: 'app_api_user')]
+  public function getUserInfo(SerializerInterface $serializer): JsonResponse
+  {
+    $user = $this->getUser();
+
+    if ($user) {
+      $data = $serializer->normalize($user, null, ['groups' => 'json_user']);
+      return new JsonResponse($data);
+    }
+
+    return new JsonResponse(['error' => 'Not logged in'], 401);
+  }
+
+  #[Route('/api/playlist/', name: 'app_api_playlist')]
+  public function getUserMovies(SerializerInterface $serializer): JsonResponse
+  {
+    $user = $this->getUser();
+
+    if ($user) {
+      $movies = $user->getMovie();
+      $data = $serializer->normalize($movies, null, ['groups' => 'json_playlist']);
+      return new JsonResponse($data);
+    }
+
+    return new JsonResponse(['error' => 'Not logged in'], 401);
   }
 
 }

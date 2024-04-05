@@ -17,33 +17,40 @@ class Movie
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['json_movies', 'json_category', 'json_search'])]
+    #[Groups(['json_movie', 'json_category', 'json_search', 'json_playlist'])]
     private ?int $id = null;
  
  
      #[ORM\Column(length: 255)]
-     #[Groups(['json_movies', 'json_category', 'json_search'])]
+     #[Groups(['json_movie', 'json_category', 'json_search', 'json_playlist'])]
      private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'movies')]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'movie')]
+    #[Groups(['json_movie', 'json_playlist'])]
     private Collection $category;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['json_search'])]
+    #[Groups(['json_movie', 'json_search', 'json_category', 'json_playlist'])]
     private ?string $img = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['json_playlist', 'json_category'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['json_playlist', 'json_category'])]
     private ?string $duree = null;
 
     #[ORM\Column(length: 255)]
     private ?string $video = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'movie')]
+    private Collection $users;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -131,6 +138,33 @@ class Movie
     public function setVideo(string $video): static
     {
         $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addMovie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeMovie($this);
+        }
 
         return $this;
     }

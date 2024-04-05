@@ -1,22 +1,30 @@
 import React from "react"
 import Button from "../Button/Button";
+import { useState } from "react";
 
 export default function FilmPage({ data }) {
+    const [inPlaylist, setInPlaylist] = useState(false);
+
+    const handleButtonClick = () => {
+        setInPlaylist(!inPlaylist); 
+    };
+
     return (
         <>
-            <div className="relative h-[20rem] md:h-[50rem]">
-                <video className="absolute inset-0 w-full h-[20rem] object-cover md:h-[50rem]" src={`/video/${data.video}`} autoPlay muted loop>
+            <div className="relative h-[19rem] md:h-[38rem]">
+                <video className="absolute inset-0 w-full h-[17rem] object-cover md:h-[38rem]" src={`/video/${data.video}`} autoPlay muted loop>
                 </video>
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background h-[20rem] md:h-[50rem] "></div>
                 <div className="absolute bottom-0 left-0 flex flex-col max-w-[35rem] gap-10 p-10 z-10">
-                    <div className="flex flex-row w-[10rem] md:w-[30rem]">
-                        <img src={`/img/${data.img}`} alt="" className="w-full" />
+                    <div className="flex flex-row h-[5rem] md:h-[15rem] w-[10rem] md:w-[30rem]">
+                        <img src={`/img/${data.img}`} alt="" className="h-full w-full" />
                         <div className="flex flex-col justify-center pl-5">
                             <h2 className="text-forground text-4xl w-[50rem]">{data.name}</h2>
                             <h2 className="text-forground text-xl mt-2">{data.duree}</h2>
                         </div>
                     </div>
-                    <Button className="w-2/3">Voir</Button>
+                    <Button className="w-2/3" onClick={handleButtonClick}>
+                        {inPlaylist ? 'Supprimer' : 'Ajouter'} {/* Change le texte du bouton en fonction de l'état */}
+                    </Button>
                 </div>
             </div>
             <div className="flex items-center mt-20 pb-5 flex-col md:flex-row w-full gap-10 px-10">

@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
@@ -16,9 +19,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['json_user'])]
     private ?int $id = null;
 
+
     #[ORM\Column(length: 180)]
+    #[Groups(['json_user'])]
     private ?string $email = null;
 
     /**
@@ -32,6 +38,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column(length: 255)]
+    #[Groups(['json_user'])]
+    private ?string $img = null;
+
+    #[ORM\ManyToMany(targetEntity: Movie::class, inversedBy: 'users')]
+    #[Groups(['json_playlist'])]
+    private Collection $movie;
+
+    public function __construct()
+    {
+        $this->movie = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,5 +125,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(string $img): static
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, movie>
+     */
+    public function getMovie(): Collection
+    {
+        return $this->movie;
+    }
+
+    public function addMovie(movie $movie): static
+    {
+        if (!$this->movie->contains($movie)) {
+            $this->movie->add($movie);
+        }
+
+        return $this;
+    }
+
+    public function removeMovie(movie $movie): static
+    {
+        $this->movie->removeElement($movie);
+
+        return $this;
     }
 }

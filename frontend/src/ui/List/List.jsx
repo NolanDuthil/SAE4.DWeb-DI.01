@@ -6,7 +6,6 @@ export default function List({ data }) {
     const [isOverflowing, setIsOverflowing] = useState(false);
     const [atStart, setAtStart] = useState(true);
     const [atEnd, setAtEnd] = useState(false);
-    const [hoverIndex, setHoverIndex] = useState(null);
     const listRef = useRef(null);
 
     const checkOverflow = useCallback(() => {

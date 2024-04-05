@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 
 class UserCrudController extends AbstractCrudController
@@ -23,6 +24,7 @@ class UserCrudController extends AbstractCrudController
         $email = EmailField::new('email');
         // un champ de type choice(select) pour la propriété roles
         $roles = ChoiceField::new('roles');
+        $img = TextField::new('img');
         // définition des choix possibles pour le champ roles
         $roles->setChoices(['ROLE_USER' => 'ROLE_USER', 'ROLE_ADMIN' => 'ROLE_ADMIN']);
         // autoriser le choix multiple
@@ -30,7 +32,8 @@ class UserCrudController extends AbstractCrudController
         // retourner les champs
         return [
             $email,
-            $roles
+            $roles,
+            $img
         ];
     }
 }

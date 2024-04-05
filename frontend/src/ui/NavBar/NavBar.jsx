@@ -11,7 +11,7 @@ import { fetchSearch } from "../../lib/loaders"
 import ListResult from '../List/ListResult';
 
 
-export default function NavBar() {
+export default function NavBar({ user }) {
   const [MenuBurgerOpen, setMenuBurgerOpen] = useState(false);
   const [SearchBarOpen, setSearchBarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,14 +28,14 @@ export default function NavBar() {
   const [results, setResults] = useState([]);
 
   const loader = async () => {
-      const result = await fetchSearch({ query });
-      console.log(result);
-      setResults(result);
+    const result = await fetchSearch({ query });
+    console.log(result);
+    setResults(result);
   }
 
   const handleSubmit = (event) => {
-      event.preventDefault();
-      loader();
+    event.preventDefault();
+    loader();
   }
 
   // Ecouter l'événement de défilement
@@ -59,20 +59,19 @@ export default function NavBar() {
       ) : (
         <nav className={`fixed w-full p-4 z-30 flex justify-between items-center transition-colors duration-200 ${isScrolled ? 'bg-background' : 'bg-transparent'}`}>
           <div className='flex items-center'>
-            {MenuBurgerOpen ? 
+            {MenuBurgerOpen ?
               <Mark className="w-8 mr-3  relative z-50  md:hidden " onClick={toggleMenuBurger} /> :
               <MenuBar className="w-8 mr-3 relative z-50  md:hidden " onClick={toggleMenuBurger} />
             }
-            <Link to="/" ><LogoFilmIn className="w-16 z-30"/></Link>
+            <Link to="/" ><LogoFilmIn className="w-16 z-30" /></Link>
           </div>
+            <MenuBurger user={user} isActive={MenuBurgerOpen} className="z-50" />
 
-          <MenuBurger isActive={MenuBurgerOpen} className="z-50" />
-
-          <button className="w-8" onClick={toggleSearchBar}>
-            <Search />
-          </button>
+            <button className="w-8" onClick={toggleSearchBar}>
+              <Search />
+            </button>
         </nav>
-        )}
+      )}
 
     </>
   );
