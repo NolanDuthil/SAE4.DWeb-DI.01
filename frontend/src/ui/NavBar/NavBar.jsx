@@ -8,7 +8,6 @@ import MenuBurger from '../MenuBurger/MenuBurger';
 import { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import { fetchSearch } from "../../lib/loaders"
-import ListResult from '../List/ListResult';
 
 
 export default function NavBar({ user }) {
@@ -63,7 +62,7 @@ export default function NavBar({ user }) {
               <Mark className="w-8 mr-3  relative z-50  md:hidden " onClick={toggleMenuBurger} /> :
               <MenuBar className="w-8 mr-3 relative z-50  md:hidden " onClick={toggleMenuBurger} />
             }
-            <Link to="/" ><LogoFilmIn className="w-16 z-30" /></Link>
+            <Link to="/" ><LogoFilmIn className="w-16" /></Link>
           </div>
             <MenuBurger user={user} isActive={MenuBurgerOpen} className="z-50" />
 
