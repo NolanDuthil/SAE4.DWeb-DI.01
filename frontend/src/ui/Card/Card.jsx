@@ -4,7 +4,6 @@ import Cardhover, { CardhoverCat } from './Cardhover';
 export default function Card({data}) {
   const [hover, setHover] = useState(false);
   const [isMd, setIsMd] = useState(false);
-  console.log(data)
   useEffect(() => {
     const handleResize = () => {
       setIsMd(window.innerWidth <= 768);

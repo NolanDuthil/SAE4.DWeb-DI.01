@@ -8,7 +8,6 @@ export async function loader({id}) {
 
 export default function Cat() {
     const data = useLoaderData();
-    console.log(data)
     return (
         <ListCategories data={data}/>
     )

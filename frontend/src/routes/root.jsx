@@ -14,7 +14,7 @@ export default function Root() {
     <>
       <section className="bg-background min-h-screen ">
         <NavBar user={data} />
-        <div className="">
+        <div className="mb-[5rem]">
           <Outlet />
         </div>
       </section>

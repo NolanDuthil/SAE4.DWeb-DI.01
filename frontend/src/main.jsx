@@ -13,7 +13,6 @@ import Playlist, { loader as playlistloader } from './routes/playlist.jsx';
 
 
 import './index.css';
-import ListCategories from './ui/List/ListCategories.jsx';
 
 
 const router = createBrowserRouter([

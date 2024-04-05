@@ -48,7 +48,6 @@ export default function ListCategories({ data }) {
 
     return (
         <div className="pt-32 px-12 w-full">
-            <h1 className="text-forground text-2xl font-bold">Film</h1>
             <div className="mt-5 flex flex-row max-w-full items-center">
                 <div className="flex h-[32rem] gap-10 overflow-hidden" ref={listRef}>
                     {data.movies.map((movie, index) => (
