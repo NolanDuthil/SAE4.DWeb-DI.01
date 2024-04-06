@@ -1,12 +1,12 @@
 import React from "react";
 import Button from "../Button/Button";
 import { useState, useEffect } from "react";
-import { fetchAddPlaylist, fetchRemovePlaylist, fetchPlaylist } from "../../lib/loaders";
-import { useLoaderData } from "react-router-dom";
+import { fetchAddPlaylist, fetchRemovePlaylist, fetchPlaylist, fetchUser } from "../../lib/loaders";
 
 export default function FilmPage({ data }) {
     const [playlist, setPlaylist] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isConnected, setIsConnected] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,10 +18,15 @@ export default function FilmPage({ data }) {
         fetchData();
     }, []);
 
+    if (loading) {
+        return <div>Chargement...</div>;
+    }
+
     const handlerAdd = async (id) => {
         await fetchAddPlaylist({ id });
         let data = await fetchPlaylist();
         setPlaylist(data);
+        console.log(data);
     }
 
     const handlerRemove = async (id) => {
@@ -29,6 +34,7 @@ export default function FilmPage({ data }) {
         let data = await fetchPlaylist();
         setPlaylist(data);
     }
+
 
     return (
         <>
@@ -47,9 +53,15 @@ export default function FilmPage({ data }) {
                                     <h2 className="text-forground text-xl mt-2">{data.duree}</h2>
                                 </div>
                             </div>
-                            {playlist && (
+                            {playlist.error !== "Not logged in" && (
                                 <Button className="w-[20rem]"
-                                    onClick={() => playlist.some(movie => movie.id === data.id) ? handlerRemove(data.id) : handlerAdd(data.id)}
+                                    onClick={() => {
+                                        if (playlist.some(movie => movie.id === data.id)) {
+                                            handlerRemove(data.id);
+                                        } else {
+                                            handlerAdd(data.id);
+                                        }
+                                    }}
                                 >
                                     {playlist.some(movie => movie.id === data.id) ? 'Supprimer' : 'Ajouter'}
                                 </Button>

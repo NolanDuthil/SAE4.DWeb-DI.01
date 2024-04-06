@@ -41,7 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     #[Groups(['json_user'])]
-    private ?string $img = null;
+    private ?string $img;
 
     #[ORM\ManyToMany(targetEntity: Movie::class, inversedBy: 'users')]
     #[Groups(['json_playlist'])]

@@ -30,5 +30,17 @@ class SecurityController extends AbstractController
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
+    #[Route(path: '/security_register', name: 'app_security_register')]
+    public function register(): void
+    {
+        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    #[Route(path: '/redirect', name: 'app_redirectToHome')]
+    public function redirectToHome(): \Symfony\Component\HttpFoundation\RedirectResponse
+    {
+        return $this->redirect('http://localhost:8090/');
+    }
+
     
 }
