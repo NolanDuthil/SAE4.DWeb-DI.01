@@ -7,7 +7,7 @@ export async function fetchMovies() {
 }
 
 export async function fetch1Movie(id) {
-    let answer = await fetch(`http://localhost/api:8080/movie/${id}`);
+    let answer = await fetch(`http://localhost:8080/api/movie/${id}`);
     let data = await answer.json();
     return data;
 }
